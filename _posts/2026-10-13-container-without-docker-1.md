@@ -117,3 +117,6 @@ USB를 꽂으면 `/dev/sdb1` 같은 장치로 잡히고, 이걸 `/media/usb` 같
 
 컨테이너 파일시스템을 정리하자면, 프로세스 실행에 필요한 것만 패키징해서 그 경로를 프로세스 실행 환경의 루트 파일시스템으로 격리해 버리는 것이다.
 그 방법으로는 `chroot`와 `pivot_root`가 있다.
+
+![chroot와 pivot_root 비교](/assets/img/posts/container-without-docker-1/chroot-vs-pivot-root.svg){: w="960" h="420" }
+_chroot와 pivot_root 비교_
