@@ -1,0 +1,29 @@
+---
+layout: page
+---
+
+{% assign prefix = page.relative_path | remove: '.md' | append: '/' %}
+{% assign notes = site.projects
+  | where_exp: 'd', 'd.relative_path contains prefix'
+  | where_exp: 'd', 'd.layout != "project"'
+  | sort: 'date'
+  | reverse
+%}
+
+<h1 class="dynamic-title">{{ page.title }}</h1>
+
+<div class="content">
+  {% if page.period %}<p class="text-muted mb-1">{{ page.period }}</p>{% endif %}
+  {% if page.summary %}<p>{{ page.summary }}</p>{% endif %}
+  {{ content }}
+
+  <h2>기록 <small class="text-muted">{{ notes | size }}</small></h2>
+  <ul>
+    {% for note in notes %}
+      <li>
+        <span class="text-muted me-2">{{ note.date | date: '%Y.%m.%d' }}</span>
+        <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

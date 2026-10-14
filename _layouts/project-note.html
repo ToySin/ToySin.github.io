@@ -1,0 +1,16 @@
+---
+layout: post
+---
+
+{% assign parts = page.relative_path | split: '/' %}
+{% assign intro_path = parts[0] | append: '/' | append: parts[1] | append: '.md' %}
+{% assign project = site.projects | where: 'relative_path', intro_path | first %}
+
+{% if project %}
+<p class="text-muted">
+  <i class="fas fa-code me-1"></i>
+  <a href="{{ project.url | relative_url }}">{{ project.title }}</a> 의 기록
+</p>
+{% endif %}
+
+{{ content }}

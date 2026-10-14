@@ -1,0 +1,53 @@
+---
+layout: page
+---
+
+{% assign projects = site.projects | where: 'layout', 'project' | sort: 'period' | reverse %}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for p in projects %}
+    {% assign prefix = p.relative_path | remove: '.md' | append: '/' %}
+    {% assign notes = site.projects
+      | where_exp: 'd', 'd.relative_path contains prefix'
+      | where_exp: 'd', 'd.layout != "project"'
+    %}
+
+    <article class="card-wrapper card">
+      <a href="{{ p.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
+        {% assign card_body_col = '12' %}
+        {% if p.image %}
+          {% assign src = p.image.path | default: p.image %}
+          <div class="col-md-5">
+            <img src="{{ src | relative_url }}" alt="{{ p.image.alt | default: p.title | xml_escape }}">
+          </div>
+          {% assign card_body_col = '7' %}
+        {% endif %}
+
+        <div class="col-md-{{ card_body_col }}">
+          <div class="card-body d-flex flex-column">
+            <h1 class="card-title my-2 mt-md-0">{{ p.title }}</h1>
+
+            <div class="card-text content mt-0 mb-3">
+              <p>{{ p.summary }}</p>
+            </div>
+
+            <div class="post-meta flex-grow-1 d-flex align-items-end">
+              <div class="me-auto">
+                {% if p.period %}
+                  <i class="far fa-calendar fa-fw me-1"></i>
+                  <span class="me-2">{{ p.period }}</span>
+                {% endif %}
+                <i class="far fa-file-lines fa-fw me-1"></i>
+                <span>기록 {{ notes | size }}개</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+
+{% if projects.size == 0 %}
+  <p>아직 정리 중입니다.</p>
+{% endif %}
