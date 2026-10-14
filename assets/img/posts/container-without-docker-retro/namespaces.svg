@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 516" width="960" height="516" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>네임스페이스별 격리 대상 비교</title>
+
+  <!-- card background so the figure reads the same in light and dark themes -->
+  <rect x="0" y="0" width="960" height="516" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="40" y="56" font-size="22" font-weight="700" fill="#0f172a">네임스페이스별 격리 대상</text>
+  <text x="40" y="82" font-size="15" fill="#64748b">컨테이너 안에서 보이는 것과 밖(호스트·다른 컨테이너)에서 보이는 것</text>
+
+  <!-- table frame -->
+  <rect x="30" y="100" width="900" height="384" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <path d="M30,144 V110 Q30,100 40,100 H920 Q930,100 930,110 V144 Z" fill="#f1f5f9"/>
+  <g font-size="15" font-weight="700" fill="#334155">
+    <text x="48" y="128">네임스페이스</text>
+    <text x="208" y="128">격리 대상</text>
+    <text x="438" y="128" fill="#1d4ed8">컨테이너 안에서</text>
+    <text x="698" y="128">밖에서 보면</text>
+  </g>
+  <g stroke="#e2e8f0" stroke-width="1.5">
+    <line x1="30" y1="144" x2="930" y2="144"/>
+    <line x1="30" y1="212" x2="930" y2="212"/>
+    <line x1="30" y1="280" x2="930" y2="280"/>
+    <line x1="30" y1="348" x2="930" y2="348"/>
+    <line x1="30" y1="416" x2="930" y2="416"/>
+    <line x1="190" y1="100" x2="190" y2="484"/>
+    <line x1="420" y1="100" x2="420" y2="484"/>
+    <line x1="680" y1="100" x2="680" y2="484"/>
+  </g>
+  <!-- container column tint -->
+  <rect x="421" y="145" width="258" height="338" fill="#eff6ff" opacity="0.6"/>
+
+  <!-- namespace chips -->
+  <g font-size="15" font-weight="700" fill="#7c3aed" text-anchor="middle">
+    <rect x="48" y="161" width="124" height="34" rx="17" fill="#f5f3ff" stroke="#8b5cf6" stroke-dasharray="5 3"/><text x="110" y="184">UTS ns</text>
+    <rect x="48" y="229" width="124" height="34" rx="17" fill="#f5f3ff" stroke="#8b5cf6" stroke-dasharray="5 3"/><text x="110" y="252">IPC ns</text>
+    <rect x="48" y="297" width="124" height="34" rx="17" fill="#f5f3ff" stroke="#8b5cf6" stroke-dasharray="5 3"/><text x="110" y="320">PID ns</text>
+    <rect x="48" y="365" width="124" height="34" rx="17" fill="#f5f3ff" stroke="#8b5cf6" stroke-dasharray="5 3"/><text x="110" y="388">Network ns</text>
+    <rect x="48" y="433" width="124" height="34" rx="17" fill="#f5f3ff" stroke="#8b5cf6" stroke-dasharray="5 3"/><text x="110" y="456">User ns</text>
+  </g>
+
+  <!-- 격리 대상 -->
+  <g font-size="15" fill="#0f172a">
+    <text x="208" y="184">호스트 이름</text>
+    <text x="208" y="240">프로세스 간 통신 (IPC)</text>
+    <text x="208" y="262" font-size="14" fill="#64748b">공유 메모리, 바이너리 세마포어</text>
+    <text x="208" y="320">프로세스 id</text>
+    <text x="208" y="388">네트워크 (포트)</text>
+    <text x="208" y="456">사용자 (UID)</text>
+  </g>
+
+  <!-- 컨테이너 안에서 -->
+  <g font-size="15" fill="#1e3a8a">
+    <text x="438" y="184">컨테이너만의 호스트 이름</text>
+    <text x="438" y="240">컨테이너 안 프로세스끼리만</text>
+    <text x="438" y="262">공유하며 통신</text>
+    <text x="438" y="308">init 프로세스가</text>
+    <text x="438" y="330" font-weight="700">pid=1</text>
+    <text x="438" y="376">나도 <tspan font-weight="700">80</tspan>, 친구도 <tspan font-weight="700">80</tspan></text>
+    <text x="438" y="398" font-size="14" fill="#15803d">네트워크가 분리돼 둘 다 뜬다</text>
+    <text x="438" y="456" font-weight="700">UID=0(root)</text>
+  </g>
+
+  <!-- 밖에서 보면 -->
+  <g font-size="15" fill="#334155">
+    <text x="698" y="184">호스트 이름은 그대로</text>
+    <text x="698" y="240">다른 컨테이너는</text>
+    <text x="698" y="262">알 수 없다</text>
+    <text x="698" y="308">실제로는</text>
+    <text x="698" y="330"><tspan font-weight="700">11582</tspan> 같은 pid</text>
+    <text x="698" y="376" fill="#dc2626">같은 네트워크였다면</text>
+    <text x="698" y="398" fill="#dc2626">80번 포트를 서로 뺏는다</text>
+    <text x="698" y="456">호스트 일반 유저</text>
+  </g>
+</svg>

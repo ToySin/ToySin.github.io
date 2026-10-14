@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>PID 네임스페이스 중첩: 같은 /bin/sh가 자식 네임스페이스에서는 PID 1, 부모 네임스페이스에서는 PID 1150012</title>
+  <defs>
+    <marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker>
+  </defs>
+
+  <!-- card background so the figure reads the same in light and dark themes -->
+  <rect x="0" y="0" width="960" height="440" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="40" y="56" font-size="22" font-weight="700" fill="#0f172a">PID 네임스페이스</text>
+  <text x="40" y="84" font-size="15" fill="#64748b">부모 네임스페이스와 자식 네임스페이스의 중첩 구조 · 부모는 자식의 PID를 다 볼 수 있다</text>
+
+  <!-- parent (host) PID namespace -->
+  <rect x="30" y="106" width="900" height="250" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="50" y="136" font-size="16" font-weight="700" fill="#7c3aed">부모 네임스페이스 (호스트)</text>
+  <text x="50" y="160" font-size="14" fill="#64748b">pid ns 4026531836</text>
+
+  <g font-size="14">
+    <rect x="50" y="180" width="370" height="40" rx="6" fill="#f1f5f9"/>
+    <text x="66" y="205" fill="#7c3aed" font-weight="700">PID 1</text>
+    <text x="130" y="205" fill="#334155">init 프로세스 (systemd)</text>
+
+    <rect x="50" y="232" width="370" height="40" rx="6" fill="#f1f5f9"/>
+    <text x="66" y="257" fill="#7c3aed" font-weight="700">1150011</text>
+    <text x="140" y="257" fill="#334155" font-family="'SFMono-Regular',Menlo,monospace">unshare -fp --mount-proc</text>
+  </g>
+
+  <line x1="420" y1="252" x2="466" y2="252" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="443" y="242" font-size="14" fill="#1e293b" text-anchor="middle">fork</text>
+
+  <text x="50" y="310" font-size="14" fill="#334155">부모인 호스트에서는 자식이 보인다</text>
+  <text x="50" y="334" font-size="14" fill="#64748b" font-family="'SFMono-Regular',Menlo,monospace">ps -ef → 1150012 /bin/sh</text>
+
+  <!-- child (container) PID namespace -->
+  <rect x="470" y="172" width="444" height="168" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="488" y="198" font-size="16" font-weight="700" fill="#15803d">자식 네임스페이스 (컨테이너)</text>
+  <text x="488" y="220" font-size="14" fill="#64748b">pid ns 4026532582</text>
+
+  <rect x="488" y="234" width="408" height="90" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="504" y="260" font-size="16" font-weight="700" fill="#1d4ed8" font-family="'SFMono-Regular',Menlo,monospace">/bin/sh</text>
+  <text x="504" y="286" font-size="14" fill="#334155">자식 네임스페이스에서의 PID</text>
+  <text x="880" y="286" font-size="16" font-weight="700" fill="#15803d" text-anchor="end">1</text>
+  <text x="504" y="310" font-size="14" fill="#334155">부모 네임스페이스에서의 PID</text>
+  <text x="880" y="310" font-size="16" font-weight="700" fill="#7c3aed" text-anchor="end">1150012</text>
+
+  <text x="40" y="390" font-size="16" font-weight="700" fill="#0f172a">자식은 두 개의 PID를 가진다 — ns를 찍어보면 같은 것(4026532582)을 확인할 수 있다</text>
+  <text x="40" y="416" font-size="14" font-weight="700" fill="#dc2626">1번이 죽으면 컨테이너가 죽는다</text>
+</svg>

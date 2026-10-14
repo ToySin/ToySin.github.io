@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>RED / BLUE 컨테이너 전체 구성도</title>
+
+  <!-- card background so the figure reads the same in light and dark themes -->
+  <rect x="0" y="0" width="960" height="640" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="40" y="52" font-size="22" font-weight="700" fill="#0f172a">RED / BLUE 컨테이너 구성</text>
+  <text x="40" y="80" font-size="15" fill="#64748b">하나의 호스트 위에 격리된 컨테이너 두 개</text>
+
+  <!-- host -->
+  <rect x="30" y="100" width="900" height="452" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="50" y="128" font-size="15" font-weight="700" fill="#334155">호스트</text>
+
+  <!-- ===== RED ===== -->
+  <rect x="60" y="142" width="360" height="390" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="80" y="178" font-size="20" font-weight="700" fill="#dc2626">RED 컨테이너</text>
+  <text x="400" y="178" font-size="14" fill="#64748b" text-anchor="end" font-family="Menlo,monospace">hostname RED</text>
+
+  <rect x="80" y="196" width="320" height="70" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="96" y="221" font-size="14" font-weight="700" fill="#7c3aed">네임스페이스 (unshare)</text>
+  <text x="96" y="249" font-size="15" fill="#334155">mount · uts · ipc · pid · net</text>
+
+  <rect x="80" y="278" width="320" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="96" y="303" font-size="14" font-weight="700" fill="#15803d">루트 (overlay → pivot_root)</text>
+  <text x="96" y="331" font-size="15" fill="#14532d" font-family="Menlo,monospace">/redfs/merge</text>
+
+  <rect x="80" y="360" width="320" height="70" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="96" y="385" font-size="14" font-weight="700" fill="#334155">cgroup <tspan font-family="Menlo,monospace" font-weight="400" fill="#64748b">red</tspan></text>
+  <text x="96" y="413" font-size="15" fill="#334155">CPU 40% · 메모리 200MB · 스왑 X</text>
+
+  <rect x="80" y="442" width="320" height="70" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="96" y="467" font-size="14" font-weight="700" fill="#1d4ed8" font-family="Menlo,monospace">veth1</text>
+  <text x="96" y="495" font-size="15" fill="#1e3a8a" font-family="Menlo,monospace">11.11.11.2/24</text>
+
+  <!-- ===== BLUE ===== -->
+  <rect x="540" y="142" width="360" height="390" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="560" y="178" font-size="20" font-weight="700" fill="#1d4ed8">BLUE 컨테이너</text>
+  <text x="880" y="178" font-size="14" fill="#64748b" text-anchor="end" font-family="Menlo,monospace">hostname BLUE</text>
+
+  <rect x="560" y="196" width="320" height="70" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="576" y="221" font-size="14" font-weight="700" fill="#7c3aed">네임스페이스 (unshare)</text>
+  <text x="576" y="249" font-size="15" fill="#334155">mount · uts · ipc · pid · net</text>
+
+  <rect x="560" y="278" width="320" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="576" y="303" font-size="14" font-weight="700" fill="#15803d">루트 (overlay → pivot_root)</text>
+  <text x="576" y="331" font-size="15" fill="#14532d" font-family="Menlo,monospace">/bluefs/merge</text>
+
+  <rect x="560" y="360" width="320" height="70" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="576" y="385" font-size="14" font-weight="700" fill="#334155">cgroup <tspan font-family="Menlo,monospace" font-weight="400" fill="#64748b">blue</tspan></text>
+  <text x="576" y="413" font-size="15" fill="#334155">CPU 40% · 메모리 200MB · 스왑 X</text>
+
+  <rect x="560" y="442" width="320" height="70" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="576" y="467" font-size="14" font-weight="700" fill="#1d4ed8" font-family="Menlo,monospace">veth1-peer</text>
+  <text x="576" y="495" font-size="15" fill="#1e3a8a" font-family="Menlo,monospace">11.11.11.3/24</text>
+
+  <!-- veth pair -->
+  <line x1="400" y1="477" x2="560" y2="477" stroke="#1e293b" stroke-width="3"/>
+  <circle cx="400" cy="477" r="5" fill="#1e293b"/>
+  <circle cx="560" cy="477" r="5" fill="#1e293b"/>
+  <text x="480" y="463" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">veth 쌍</text>
+  <text x="480" y="499" font-size="14" fill="#15803d" text-anchor="middle">ping ✓</text>
+
+  <!-- results -->
+  <text x="40" y="588" font-size="15" fill="#334155"><tspan font-weight="700" fill="#dc2626">RED</tspan>  CPU stress → 40%에서 제한</text>
+  <text x="40" y="614" font-size="15" fill="#334155"><tspan font-weight="700" fill="#1d4ed8">BLUE</tspan>  mem stress 205M → 메모리 제한을 넘겨 종료</text>
+</svg>

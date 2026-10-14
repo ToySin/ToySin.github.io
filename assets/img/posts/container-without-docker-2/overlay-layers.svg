@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>overlay filesystem 레이어 구조: Lower layer, Upper layer, Merged View와 work</title>
+  <defs>
+    <marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker>
+  </defs>
+
+  <!-- card background so the figure reads the same in light and dark themes -->
+  <rect x="0" y="0" width="960" height="440" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="50" y="56" font-size="22" font-weight="700" fill="#0f172a">overlay filesystem</text>
+  <text x="50" y="84" font-size="15" fill="#64748b">Lower layer 위에 Upper layer를 얹고, 모든 게 합쳐진 Merged View를 마운트한다</text>
+
+  <!-- Merged View -->
+  <rect x="50" y="110" width="560" height="80" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="70" y="143" font-size="18" font-weight="700" fill="#15803d">Merged View</text>
+  <text x="70" y="170" font-size="15" fill="#14532d">모든 게 합쳐진 것 · 컨테이너에 실제로 마운트</text>
+  <text x="594" y="143" font-size="14" fill="#64748b" text-anchor="end">실습: merge</text>
+
+  <!-- Upper layer -->
+  <rect x="50" y="206" width="560" height="80" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="70" y="239" font-size="18" font-weight="700" fill="#1d4ed8">Upper layer</text>
+  <text x="70" y="266" font-size="15" fill="#1e3a8a">컨테이너를 실행하면 얹음 · 수정 기록이 남음</text>
+  <text x="594" y="239" font-size="14" fill="#64748b" text-anchor="end">실습: container</text>
+
+  <!-- Lower layer -->
+  <rect x="50" y="302" width="560" height="80" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="70" y="335" font-size="18" font-weight="700" fill="#334155">Lower layer  (Read-only)</text>
+  <text x="70" y="362" font-size="15" fill="#475569">도커에서 이미지를 받으면 받는 레이어</text>
+  <text x="594" y="335" font-size="14" fill="#64748b" text-anchor="end">실습: myroot, tools</text>
+
+  <!-- container that mounts the merged view -->
+  <line x1="612" y1="150" x2="686" y2="150" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="649" y="140" font-size="14" fill="#334155" text-anchor="middle">마운트</text>
+  <rect x="690" y="130" width="140" height="40" rx="20" fill="#1e293b"/>
+  <text x="760" y="156" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">컨테이너</text>
+
+  <!-- work dir, attached to the upper layer -->
+  <line x1="612" y1="246" x2="650" y2="246" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="650" y="206" width="270" height="80" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="668" y="233" font-size="17" font-weight="700" fill="#7c3aed">work</text>
+  <text x="668" y="256" font-size="14" fill="#334155">container에 atomic한 write를</text>
+  <text x="668" y="276" font-size="14" fill="#334155">하기 위해 존재</text>
+
+  <text x="50" y="414" font-size="15" fill="#64748b">Lower layer는 그대로 두고, 수정하면 Upper layer에 기록이 남는다</text>
+</svg>
