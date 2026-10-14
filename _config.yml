@@ -15,10 +15,10 @@ timezone: Asia/Seoul
 
 title: ToySin
 
-tagline: 개발 공부 기록과 프로젝트
+tagline: 개발 기록
 
 description: >- # used by seo meta and the atom feed
-  ToySin의 개발 공부 기록과 프로젝트 포트폴리오
+  ToySin의 개발 기록
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -33,12 +33,13 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: ToySin
-  email:
+  name: Dongbin Shin
+  email: shkk1203@gmail.com
   fediverse_handle: # fill in your fediverse handle. E.g. "@username@domain.com"
   links:
     # The first element serves as the copyright owner's link
     - https://github.com/ToySin
+    - https://www.linkedin.com/in/dongbin-shin-4bb566215/
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
