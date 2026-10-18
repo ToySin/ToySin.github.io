@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>append로 cap을 넘기면 backing array가 멀리 새로 할당되고, 새 array 둘은 32 bytes 차이로 붙어 있다</title>
+  <defs>
+    <marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="410" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="30" y="48" font-size="22" font-weight="700" fill="#0f172a">append로 cap을 넘기면</text>
+  <text x="30" y="74" font-size="15" fill="#64748b">backing array가 어딘가 멀~리에 새로 할당된다 (실험 출력 주소 기준)</text>
+
+  <rect x="30" y="100" width="370" height="230" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="50" y="128" font-size="15" font-weight="700" fill="#334155">처음 할당된 위치</text>
+  <rect x="520" y="100" width="410" height="230" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="540" y="128" font-size="15" font-weight="700" fill="#334155">새로 할당된 위치 (멀~리)</text>
+
+  <g font-size="14" fill="#334155">
+    <text x="60" y="170">slice2.array  0x…e46f8</text>
+    <text x="60" y="250">slice1.array  0x…e4708</text>
+    <text x="550" y="170">slice1.array  0x…a20e0</text>
+    <text x="550" y="250">slice2.array  0x…a2100</text>
+  </g>
+  <g font-size="16" font-weight="700" text-anchor="middle">
+    <rect x="60" y="180" width="60" height="44" fill="#f1f5f9" stroke="#94a3b8"/><text x="90" y="208" fill="#334155">3</text>
+    <rect x="120" y="180" width="60" height="44" fill="#f1f5f9" stroke="#94a3b8"/><text x="150" y="208" fill="#334155">4</text>
+    <rect x="60" y="260" width="60" height="44" fill="#f1f5f9" stroke="#94a3b8"/><text x="90" y="288" fill="#334155">1</text>
+    <rect x="120" y="260" width="60" height="44" fill="#f1f5f9" stroke="#94a3b8"/><text x="150" y="288" fill="#334155">2</text>
+
+    <rect x="550" y="180" width="60" height="44" fill="#dbeafe" stroke="#3b82f6"/><text x="580" y="208" fill="#1d4ed8">1</text>
+    <rect x="610" y="180" width="60" height="44" fill="#dbeafe" stroke="#3b82f6"/><text x="640" y="208" fill="#1d4ed8">2</text>
+    <rect x="670" y="180" width="60" height="44" fill="#dbeafe" stroke="#3b82f6"/><text x="700" y="208" fill="#1d4ed8">3</text>
+    <rect x="730" y="180" width="60" height="44" fill="#dbeafe" stroke="#3b82f6"/><text x="760" y="208" fill="#1d4ed8">4</text>
+    <rect x="550" y="260" width="60" height="44" fill="#e2e8f0" stroke="#1e293b"/><text x="580" y="288" fill="#0f172a">3</text>
+    <rect x="610" y="260" width="60" height="44" fill="#e2e8f0" stroke="#1e293b"/><text x="640" y="288" fill="#0f172a">4</text>
+    <rect x="670" y="260" width="60" height="44" fill="#e2e8f0" stroke="#1e293b"/><text x="700" y="288" fill="#0f172a">3</text>
+    <rect x="730" y="260" width="60" height="44" fill="#e2e8f0" stroke="#1e293b"/><text x="760" y="288" fill="#0f172a">4</text>
+  </g>
+  <path d="M806,202 L812,202 L812,282 L806,282" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <text x="822" y="238" font-size="14" font-weight="700" fill="#334155">32 bytes</text>
+  <text x="822" y="258" font-size="14" font-weight="700" fill="#334155">차이로 붙음</text>
+
+  <path d="M180,282 C360,282 380,202 546,202" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#a-blue)"/>
+  <path d="M180,202 C360,202 380,282 546,282" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a-dark)"/>
+
+  <text x="30" y="364" font-size="15" font-weight="700" fill="#2563eb">① slice1 = append(slice1, slice2...)  →  slice1.array가 새 위치로</text>
+  <text x="30" y="390" font-size="15" font-weight="700" fill="#1e293b">② slice2 = append(slice2, slice2...)  →  slice2.array도 바로 옆에 새로 할당</text>
+</svg>

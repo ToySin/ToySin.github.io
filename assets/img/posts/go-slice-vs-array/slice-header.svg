@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" width="960" height="390" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>array는 값을 그 자리에 바로 들고 있고, slice는 array 포인터, len, cap을 가진 24 bytes 헤더다</title>
+  <defs><marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker></defs>
+  <rect x="0" y="0" width="960" height="390" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+  <line x1="460" y1="36" x2="460" y2="360" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- array -->
+  <text x="40" y="56" font-size="22" font-weight="700" fill="#0f172a">array</text>
+  <text x="40" y="82" font-size="15" fill="#64748b">[2]int{1, 2}</text>
+  <text x="60" y="118" font-size="14" font-weight="700" fill="#334155">numArray</text>
+  <g text-anchor="middle">
+    <rect x="60" y="128" width="120" height="56" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="180" y="128" width="120" height="56" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="120" y="154" font-size="16" font-weight="700" fill="#1d4ed8">1</text><text x="120" y="174" font-size="14" fill="#64748b">8 bytes</text>
+    <text x="240" y="154" font-size="16" font-weight="700" fill="#1d4ed8">2</text><text x="240" y="174" font-size="14" fill="#64748b">8 bytes</text>
+  </g>
+  <g font-size="15" fill="#334155">
+    <text x="60" y="240">연속된 메모리에 값을 저장하는 자료형</text>
+    <text x="60" y="266">변수 주소 = 첫 원소 주소</text>
+    <text x="60" y="292">배열 크기: 16 bytes</text>
+  </g>
+
+  <!-- slice -->
+  <text x="490" y="56" font-size="22" font-weight="700" fill="#0f172a">slice</text>
+  <text x="490" y="82" font-size="15" fill="#64748b">make([]int, 2, 4)</text>
+  <text x="500" y="118" font-size="14" font-weight="700" fill="#334155">slice 헤더 (24 bytes)</text>
+  <g text-anchor="middle">
+    <rect x="500" y="128" width="120" height="56" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <rect x="620" y="128" width="120" height="56" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <rect x="740" y="128" width="120" height="56" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="560" y="154" font-size="16" font-weight="700" fill="#0f172a">array</text><text x="560" y="174" font-size="14" fill="#64748b">pointer 8B</text>
+    <text x="680" y="154" font-size="16" font-weight="700" fill="#0f172a">len 2</text><text x="680" y="174" font-size="14" fill="#64748b">int 8B</text>
+    <text x="800" y="154" font-size="16" font-weight="700" fill="#0f172a">cap 4</text><text x="800" y="174" font-size="14" fill="#64748b">int 8B</text>
+  </g>
+  <line x1="560" y1="184" x2="560" y2="236" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="574" y="216" font-size="14" fill="#334155">backing array</text>
+  <g>
+    <rect x="500" y="240" width="90" height="48" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="590" y="240" width="90" height="48" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="680" y="240" width="90" height="48" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+    <rect x="770" y="240" width="90" height="48" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  </g>
+  <g fill="none" stroke="#334155" stroke-width="1.5">
+    <path d="M500,298 L500,304 L680,304 L680,298"/>
+    <path d="M500,326 L500,332 L860,332 L860,326"/>
+  </g>
+  <text x="590" y="322" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">len 2</text>
+  <text x="680" y="352" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">cap 4 → backing array 32 bytes</text>
+</svg>
