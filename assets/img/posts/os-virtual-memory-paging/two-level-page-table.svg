@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>2단계 페이지 테이블: VPN을 PDindex와 PTindex로 나눠 page directory와 page table을 차례로 찾는다</title>
+  <defs>
+    <marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker>
+    <marker id="a-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="490" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="30" y="42" font-size="22" font-weight="700" fill="#0f172a">2단계 페이지 테이블 (page directory)</text>
+  <text x="30" y="66" font-size="15" fill="#64748b">32bit 가상주소, 4KB 페이지, 상위 8비트를 Page Directory에 사용</text>
+
+  <!-- virtual address -->
+  <text x="367" y="94" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">VPN (20bit)</text>
+  <path d="M180,108 L180,102 L555,102 L555,108" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <text x="30" y="138" font-size="15" font-weight="700" fill="#334155">가상주소</text>
+  <rect x="180" y="114" width="150" height="36" fill="#dbeafe" stroke="#3b82f6"/>
+  <rect x="330" y="114" width="225" height="36" fill="#eff6ff" stroke="#3b82f6"/>
+  <rect x="555" y="114" width="225" height="36" fill="#f1f5f9" stroke="#94a3b8"/>
+  <g font-size="14" font-weight="700" text-anchor="middle">
+    <text x="255" y="137" fill="#1d4ed8">PDindex (8bit)</text>
+    <text x="442" y="137" fill="#1d4ed8">PTindex (12bit)</text>
+    <text x="667" y="137" fill="#334155">offset (12bit)</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4" fill="none">
+    <line x1="255" y1="150" x2="240" y2="196" marker-end="url(#a-gray)"/>
+    <line x1="442" y1="150" x2="528" y2="206" marker-end="url(#a-gray)"/>
+    <line x1="667" y1="150" x2="828" y2="236" marker-end="url(#a-gray)"/>
+  </g>
+
+  <!-- CR3 -->
+  <rect x="14" y="258" width="114" height="32" rx="16" fill="#1e293b"/>
+  <text x="71" y="279" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">CR3 (PTBR)</text>
+  <line x1="128" y1="274" x2="148" y2="274" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+
+  <!-- page directory -->
+  <rect x="150" y="200" width="180" height="200" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="166" y="226" font-size="15" font-weight="700" fill="#1d4ed8">page directory</text>
+  <text x="166" y="246" font-size="14" fill="#64748b">엔트리 256개</text>
+  <g font-size="14">
+    <rect x="164" y="258" width="152" height="28" rx="5" fill="#dbeafe"/><text x="176" y="277" fill="#1e3a8a">0 → page table</text>
+    <rect x="164" y="292" width="152" height="28" rx="5" fill="#dbeafe"/><text x="176" y="311" fill="#1e3a8a">1 → page table</text>
+    <rect x="164" y="326" width="152" height="28" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-dasharray="4 3"/><text x="176" y="345" fill="#94a3b8">2 미할당</text>
+    <text x="176" y="379" fill="#64748b">… 255</text>
+  </g>
+
+  <!-- page tables -->
+  <line x1="316" y1="272" x2="438" y2="250" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <path d="M316,306 C380,306 380,360 438,360" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <rect x="440" y="210" width="180" height="80" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="456" y="242" font-size="15" font-weight="700" fill="#334155">page table</text>
+  <text x="456" y="266" font-size="14" fill="#64748b">PTE 4096개</text>
+  <rect x="440" y="320" width="180" height="80" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="456" y="352" font-size="15" font-weight="700" fill="#334155">page table</text>
+  <text x="456" y="376" font-size="14" fill="#64748b">PTE 4096개</text>
+
+  <!-- physical frame -->
+  <line x1="620" y1="252" x2="738" y2="272" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="664" y="250" font-size="14" font-weight="700" fill="#334155">PFN</text>
+  <rect x="740" y="240" width="190" height="90" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="756" y="268" font-size="15" font-weight="700" fill="#15803d">물리 메모리 프레임</text>
+  <text x="756" y="292" font-size="14" fill="#14532d">PFN + offset</text>
+  <text x="756" y="314" font-size="14" fill="#14532d">= 물리주소</text>
+
+  <text x="150" y="440" font-size="14" fill="#334155">PDindex 8bit → page table 256개 / PTindex 12bit → page table 하나에 PTE 4096개</text>
+  <text x="150" y="466" font-size="14" font-weight="700" fill="#15803d">실제로 사용하는 page가 있는 page table만 할당한다</text>
+</svg>

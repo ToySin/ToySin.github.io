@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>MLFQ 규칙: 새 작업은 최상위 큐, 시간을 소진하면 한 단계 아래, 주기 S마다 모두 최상위로</title>
+  <defs>
+    <marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker>
+    <marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="430" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <text x="30" y="48" font-size="22" font-weight="700" fill="#0f172a">MLFQ</text>
+  <text x="30" y="74" font-size="15" fill="#64748b">작업이 실행되며 보여온 특성에 따라 우선순위를 조정한다</text>
+
+  <!-- queues -->
+  <rect x="200" y="106" width="500" height="64" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <rect x="200" y="196" width="500" height="64" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <rect x="200" y="286" width="500" height="64" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <g font-size="15" font-weight="700" fill="#334155">
+    <text x="216" y="144">우선순위 높음</text>
+    <text x="216" y="234">한 단계 아래</text>
+    <text x="216" y="324">우선순위 낮음</text>
+  </g>
+  <g font-size="16" font-weight="700" fill="#1d4ed8" text-anchor="middle">
+    <rect x="340" y="120" width="56" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6"/><text x="368" y="144">A</text>
+    <rect x="408" y="120" width="56" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6"/><text x="436" y="144">B</text>
+    <rect x="340" y="210" width="56" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6"/><text x="368" y="234">C</text>
+  </g>
+  <text x="482" y="144" font-size="14" fill="#64748b">같은 우선순위 → RR (규칙 2)</text>
+
+  <!-- rule 3: new job -->
+  <rect x="30" y="120" width="110" height="36" rx="18" fill="#1e293b"/>
+  <text x="85" y="144" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">새 작업</text>
+  <line x1="140" y1="138" x2="198" y2="138" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="85" y="180" font-size="14" fill="#334155" text-anchor="middle">(규칙 3)</text>
+
+  <!-- rule 5: periodic boost -->
+  <path d="M200,330 L172,330 L172,162 L198,162" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#a-blue)"/>
+  <g font-size="14" fill="#2563eb">
+    <text x="30" y="232">주기 S가 지나면</text>
+    <text x="30" y="254">모든 작업을</text>
+    <text x="30" y="276">최상위 큐로</text>
+    <text x="30" y="298">(규칙 5)</text>
+  </g>
+
+  <!-- rule 4: demotion -->
+  <path d="M700,150 C744,150 744,216 704,216" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <path d="M700,240 C744,240 744,306 704,306" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <g font-size="14" fill="#334155">
+    <text x="760" y="214">지정된 시간을 소진하면</text>
+    <text x="760" y="236">한 단계 아래 큐로</text>
+    <text x="760" y="258">(규칙 4)</text>
+  </g>
+
+  <!-- rule 1 -->
+  <text x="200" y="392" font-size="15" font-weight="700" fill="#334155">위 큐에 작업이 있으면 아래 큐의 작업은 실행되지 않는다 (규칙 1)</text>
+</svg>
