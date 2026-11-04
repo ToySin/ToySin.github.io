@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+  <title>인증서 체인 검증: Root CA로 intermediate, intermediate로 서버 인증서, 서버 인증서로 자격증명을 검증한다</title>
+  <defs><marker id="a-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker></defs>
+  <rect x="0" y="0" width="960" height="470" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="40" y="46" font-size="22" font-weight="700" fill="#0f172a">인증서 체인 검증</text>
+  <text x="40" y="80" font-size="15" font-weight="700" fill="#334155">서버가 보내는 것</text>
+
+  <rect x="40" y="100" width="460" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="58" y="128" font-size="15" font-weight="700" fill="#1d4ed8">자격증명 (CertificateVerify)</text>
+  <text x="58" y="154" font-size="14" fill="#1e3a8a">sign(서버 개인키, transcript)</text>
+
+  <rect x="40" y="220" width="460" height="70" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="58" y="248" font-size="15" font-weight="700" fill="#334155">서버 인증서</text>
+  <text x="58" y="274" font-size="14" fill="#475569">(서버 공개키, 서버 도메인, 유효기간), sign(Inter CA, 인증서)</text>
+
+  <rect x="40" y="340" width="460" height="70" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="58" y="368" font-size="15" font-weight="700" fill="#334155">intermediate 인증서</text>
+  <text x="58" y="394" font-size="14" fill="#475569">intermediate 공개키 + Root CA 서명</text>
+
+  <line x1="270" y1="218" x2="270" y2="174" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="284" y="201" font-size="14" fill="#334155">① 서버 인증서의 공개키로 검증</text>
+  <line x1="270" y1="338" x2="270" y2="294" stroke="#1e293b" stroke-width="2" marker-end="url(#a-dark)"/>
+  <text x="284" y="321" font-size="14" fill="#334155">② intermediate 공개키로 검증</text>
+
+  <text x="640" y="326" font-size="15" font-weight="700" fill="#15803d">클라이언트 로컬</text>
+  <rect x="640" y="340" width="280" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="658" y="368" font-size="15" font-weight="700" fill="#15803d">Root CA 인증서</text>
+  <text x="658" y="394" font-size="14" fill="#14532d">OS·머신에 기본 탑재, 무한 신뢰</text>
+  <line x1="638" y1="375" x2="504" y2="375" stroke="#16a34a" stroke-width="2" marker-end="url(#a-green)"/>
+  <text x="571" y="364" font-size="14" font-weight="700" fill="#15803d" text-anchor="middle">③ 검증</text>
+
+  <text x="40" y="448" font-size="14" fill="#64748b">신뢰는 Root CA에서 시작해 위로 이어진다.</text>
+</svg>
