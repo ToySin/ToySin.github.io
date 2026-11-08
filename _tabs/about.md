@@ -28,12 +28,5 @@ order: 3
 
 ## 다음에 쓸 글
 
-**보안 / 네트워크**
-- Vault는 무엇이고, 인증서 갱신은 어떻게 하는지
-- TLS 사이에 프록시와 LB가 끼어들면 어떻게 되는지
-- k8s Service는 실시간으로 바뀌는 Pod IP를 실제로 어떻게 관리하는가
-
-**OS / 컨테이너**
-- OS 영속성 파트 (OSTEP Persistence)
-- 컨테이너의 PV (Persistent Volume)
-- CRI, CSI, CNI
+- **보안 / 네트워크**: Vault, TLS 사이의 프록시·LB, k8s Service
+- **OS / 컨테이너**: OS 영속성, PV, CRI·CSI·CNI
