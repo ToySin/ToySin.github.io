@@ -31,3 +31,4 @@ order: 3
 - **보안 / 네트워크**: Vault, TLS 사이의 프록시·LB, k8s Service
 - **OS / 컨테이너**: OS 영속성, PV, CRI·CSI·CNI
 - **로봇 / 메시징**: MQTT(EMQX) 기능 활용법, 로봇 제어를 위한 이모저모
+- **그래프**: 네비게이션 경로 생성
