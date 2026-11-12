@@ -15,10 +15,10 @@ timezone: Asia/Seoul
 
 title: ToySin
 
-tagline: 개발 기록
+tagline: 시냅스 효자손
 
 description: >- # used by seo meta and the atom feed
-  ToySin의 개발 기록
+  지적 간지럼 해소를 위한 블로그
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
