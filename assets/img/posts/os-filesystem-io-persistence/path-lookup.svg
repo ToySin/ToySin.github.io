@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 296" width="960" height="296" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<title>경로 탐색: 루트 inode부터 디렉토리 entry를 따라 파일 데이터 블록까지</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker></defs>
+<rect x="0" y="0" width="960" height="296" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="30" y="46" font-size="22" font-weight="700" fill="#0f172a">파일 이름에서 data block까지</text>
+<text x="30" y="72" font-size="15" fill="#64748b">루트 디렉토리부터 이름을 따라 inode와 데이터 블록을 번갈아 읽는다</text>
+<rect x="30" y="110" width="128" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="94.0" y="150" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">루트 inode</text>
+<line x1="158" y1="145" x2="182" y2="145" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="184" y="110" width="128" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="248.0" y="140" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">루트</text>
+<text x="248.0" y="160" font-size="14" fill="#334155" text-anchor="middle">데이터 블록</text>
+<line x1="312" y1="145" x2="336" y2="145" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="338" y="110" width="128" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="402.0" y="150" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">디렉토리 inode</text>
+<line x1="466" y1="145" x2="490" y2="145" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="492" y="110" width="128" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="556.0" y="140" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">디렉토리</text>
+<text x="556.0" y="160" font-size="14" fill="#334155" text-anchor="middle">데이터 블록</text>
+<line x1="620" y1="145" x2="644" y2="145" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="646" y="110" width="128" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="710.0" y="150" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">파일 inode</text>
+<line x1="774" y1="145" x2="798" y2="145" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="800" y="110" width="128" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="864.0" y="140" font-size="14" font-weight="700" fill="#15803d" text-anchor="middle">파일</text>
+<text x="864.0" y="160" font-size="14" fill="#15803d" text-anchor="middle">데이터 블록</text>
+<text x="633" y="136" font-size="14" font-weight="700" fill="#64748b" text-anchor="middle">…</text>
+<text x="94" y="210" font-size="14" fill="#1d4ed8" text-anchor="middle">데이터 위치</text>
+<text x="248" y="210" font-size="14" fill="#334155" text-anchor="middle">entry:</text>
+<text x="248" y="230" font-size="14" fill="#334155" text-anchor="middle">이름 → inode 번호</text>
+<text x="556" y="210" font-size="14" fill="#334155" text-anchor="middle">entry:</text>
+<text x="556" y="230" font-size="14" fill="#334155" text-anchor="middle">이름 → inode 번호</text>
+<text x="864" y="210" font-size="14" fill="#15803d" text-anchor="middle">실제 파일 내용</text>
+<text x="30" y="270" font-size="14" fill="#64748b">파일 이름은 inode가 아니라 디렉토리의 entry에 저장된다</text>
+</svg>

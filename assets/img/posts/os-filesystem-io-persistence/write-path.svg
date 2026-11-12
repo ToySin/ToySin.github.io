@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<title>쓰기 경로: write()는 페이지 캐시에 기록되면 반환하고, fsync()는 저장장치까지 영속화된 뒤 반환한다</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1e293b"/></marker></defs>
+<rect x="0" y="0" width="960" height="340" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="30" y="46" font-size="22" font-weight="700" fill="#0f172a">쓰기 경로와 반환 시점</text>
+<text x="30" y="72" font-size="15" fill="#64748b">write 성공과 데이터 영구 저장이 다른 이유</text>
+<path d="M184,122 L184,114 L466,114 L466,122" fill="none" stroke="#dc2626" stroke-width="1.5"/>
+<text x="325" y="104" font-size="14" font-weight="700" fill="#dc2626" text-anchor="middle">RAM: 전원이 꺼지면 날아갈 수 있다</text>
+<rect x="30" y="140" width="128" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="94.0" y="170" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">애플리케이션</text>
+<text x="94.0" y="190" font-size="14" fill="#334155" text-anchor="middle">write</text>
+<line x1="158" y1="175" x2="182" y2="175" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="184" y="140" width="128" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="248.0" y="170" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">kernel</text>
+<text x="248.0" y="190" font-size="14" fill="#1d4ed8" text-anchor="middle">page cache</text>
+<line x1="312" y1="175" x2="336" y2="175" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="338" y="140" width="128" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="402.0" y="180" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">dirty page</text>
+<line x1="466" y1="175" x2="490" y2="175" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="492" y="140" width="128" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="556.0" y="180" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">write-back</text>
+<line x1="620" y1="175" x2="644" y2="175" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="646" y="140" width="128" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="710.0" y="170" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">device/controller</text>
+<text x="710.0" y="190" font-size="14" fill="#334155" text-anchor="middle">cache</text>
+<line x1="774" y1="175" x2="798" y2="175" stroke="#1e293b" stroke-width="2" marker-end="url(#a)"/>
+<rect x="800" y="140" width="128" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="864.0" y="180" font-size="14" font-weight="700" fill="#15803d" text-anchor="middle">저장장치</text>
+<line x1="248" y1="212" x2="248" y2="250" stroke="#2563eb" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="183" y="252" width="130" height="34" rx="17" fill="#2563eb"/>
+<text x="248" y="274" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">write() 반환</text>
+<text x="248" y="310" font-size="14" fill="#1d4ed8" text-anchor="middle">페이지 캐시에 기록되면 성공</text>
+<line x1="864" y1="212" x2="864" y2="250" stroke="#16a34a" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="799" y="252" width="130" height="34" rx="17" fill="#16a34a"/>
+<text x="864" y="274" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">fsync() 반환</text>
+<text x="928" y="310" font-size="14" fill="#15803d" text-anchor="end">영속화되었거나 복구 가능한 상태</text>
+</svg>
